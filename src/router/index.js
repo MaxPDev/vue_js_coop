@@ -1,27 +1,60 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+const routes = [{
+        path: '/',
+        name: 'Conversations',
+        component: () =>
+            import ('../views/Conversations.vue')
+    },
+    {
+        path: '/singin',
+        name: 'SingnIn',
+        component: () =>
+            import ('../views/SignIn.vue')
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: () =>
+            import ('../views/LogIn.vue')
+    },
+    {
+        path: '/createconversation',
+        name: '/createConversation',
+        component: () =>
+            import ('../views/createConversation.vue')
+    },
+    {
+        path: '/conversation/:id',
+        name: 'Conversation',
+        component: () =>
+            import ('../views/Conversation.vue')
+    },
+    {
+        path: '/deleteconversation/:id',
+        name: 'deleteConversation',
+        component: () =>
+            import ('../views/deleteConversation.vue')
+    },
+    {
+        path: '/logout',
+        name: '/logOut',
+        component: () =>
+            import ('../views/logOut.vue')
+    },
+    {
+        path: '/members',
+        name: 'Members',
+        component: () =>
+            import ('../views/Members')
+    },
 ]
 
 const router = new VueRouter({
-  routes
+    routes
 })
 
 export default router

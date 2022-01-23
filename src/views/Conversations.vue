@@ -1,0 +1,64 @@
+<template>
+    <section class="hero is-fullheight">
+        <Header/>
+              <div class="container">
+                <h4 class="title is-4 has-text-centered">Mes conversations</h4>
+                <template v-for="conversation in conversations">
+                    <conversation class="box" :key="conversation.id" :conversation="conversation" />
+                </template>
+              </div>
+    </section>
+</template>
+<script>
+import Conversation from '../components/Conversation.vue';
+import Header from '../components/Header.vue';
+export default {
+     components: {
+        Header,
+        Conversation,
+    },
+  data() {
+    return {
+      conversations: [],
+    };
+  },
+  mounted() {
+    this.$api.get("channels").then((response) => {
+      this.conversations = response.data;
+      console.log(this.conversations);
+    });
+  },
+};
+</script>
+<style scoped>
+</style>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div class="hero-body">
+    <div class="container">
+        <h1 class="title">Listes des conversations</h1>
+          <div>
+            <h4 class="title is-4">Bonjour {{ $store.state.member.fullname }}</h4>
+          </div>
+          <button><router-link to="createConversation">Créer une conversation</router-link></button>
+          <div v-for="conversation in conversations">
+              <div class="card">
+                <div class="card-content">
+                  <div class="content">
+                    Titre : {{conversation.label}}
+                    Sujet : {{conversation.topic}}
+                  </div>
+                </div>
+              </div>
+           </div>
+       </div>
+  </div> -->
