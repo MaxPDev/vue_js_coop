@@ -1,30 +1,49 @@
 <template>
    <div>
-      <Header />
-      <section class="section">
-         <div v-if="conversation">
-            <p class="title is-5">{{conversation.topic}}</p>
-            <p class="subtitle is-6">{{conversation.label}}</p>
-            <router-link class="button button is-dark" :to="{name : 'deleteConversation', params :{id:conversation.id}}"> delete conversation</router-link>
-         </div>
-      </section>
+        <Header/>
+              <section class="section">
+                      <h4 class="title is-4 has-text-centered">Détail de conversation</h4>
+                        <div class="box" v-if="conversation">
+                           <p><b>{{conversation.topic}}</b></p>
+                           <p>{{conversation.label}}</p><br/>
+                              <router-link  div="box" class="button button is-dark" :to="{name : 'deleteConversation', params :{id:conversation.id}}"> delete conversation</router-link>
+                        </div>
+                        <div v-for="message in messages" :key="message.id">
+                           <Message :message="message" />
+                        </div>
+                        <posterMessage :conversation="conversation"/>
+               </section>
    </div>
 </template>
 <script>
+
 import Header from '../components/Header.vue';
+import posterMessage from '../components/posterMessage.vue';
+import Message from '../components/Message.vue';
+
 export default {
    components : {
       Header,
+      posterMessage,
+      Message,
    },
     data(){
        return {
-          conversation : false
+          conversation : false,
+          messages: []
        }
     },
     mounted(){
-       this.$api.get(`channels/${this.$route.params.id}`).then(response => {
+       let id = this.$route.params.id;
+       this.$api.get(`channels/${id}`).then(response => {
           this.conversation = response.data;
        });
+
+       this.$bus.$on('charger-message', message => {
+          console.log("here");
+          console.log(message)
+          this.messages.push(message)
+       })
     }
 }
 </script>

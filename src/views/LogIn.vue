@@ -26,7 +26,7 @@
                             </div>
                               <div class="box">
                                     Pas encore inscrit ?
-                                    <router-link class="is-text" to="/singnIn">S'inscrire</router-link>
+                                    <router-link class="is-text" to="/signIn">S'inscrire</router-link>
                              </div>
                         </div>
                     </div>
@@ -35,6 +35,9 @@
     </section>
 </template>
 <script>
+
+import { mapMutations } from 'vuex'
+
 export default {
     mounted(){
         if(this.$store.state.token){
@@ -43,20 +46,25 @@ export default {
     },
     data() {
         return {
-            email : "sacialicia2@gmail.com",
+            email : "maxime.piscaglia1@etu.univ-lorraine.fr",
             password : "password",
             errorMessage : '',
         };
     },
     methods : {
+
+        ...mapMutations(['setToken', 'setMember']),
+
         loginAccount() {
              this.$api.post("members/signin",{
                  email : this.email,
                  password : this.password,
              }).then(response => {
                  console.log(response.data)
-                 this.$store.commit('setToken',response.data.token);
-                 this.$store.commit('setMember',response.data.member);
+                //  this.$store.commit('setToken',response.data.token);
+                //  this.$store.commit('setMember',response.data.member);
+                this.setToken(response.data.token),
+                this.setMember(response.data.member),
                  this.$router.push("/");
                  this.errorMessage = '';
              }).catch(error => {

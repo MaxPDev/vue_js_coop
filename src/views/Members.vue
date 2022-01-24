@@ -1,14 +1,14 @@
 <template>
-  <section class="hero is-danger is-fullheight">
+  <section class="hero is-fullheight">
     <Header />
       <div class="hero-body">
         <div class="container">
           <div class="columns is-centered">
             <div class="column is-7-tablet is-6-desktop is-5-widescreen">
               <h4 class="title is-4 has-text-centered">Liste des membres</h4>
-              <div class="box" v-for="member in members">
-                <p><b>Email : </b> {{member.email}}</p>
-                <p><b>Pseudo : </b>{{member.fullname}}</p>
+              <div class="box" v-for="member in members" :key="member.id">
+                <p><b>Email : </b> {{ member.email }}</p>
+                <p><b>Pseudo : </b>{{ member.fullname }}</p>
               </div>
             </div>
           </div>
@@ -32,6 +32,7 @@ export default {
     this.$api
         .get('members')
         .then((response) => {
+          console.log(response.data);
           this.members = response.data;
         })
   }

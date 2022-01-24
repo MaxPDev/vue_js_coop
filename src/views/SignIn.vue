@@ -44,8 +44,8 @@
 export default {
     data() {
         return {
-            fullname : "Alicia",
-            email : "sacialicia2@gmail.com",
+            fullname : "Max",
+            email : "maxime.piscaglia1@etu.univ-lorraine.fr",
             password : "password",
             errorMessage : '',
         };

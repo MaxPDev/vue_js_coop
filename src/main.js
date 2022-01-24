@@ -7,6 +7,8 @@ import axios from 'axios'
 // https://www.digitalocean.com/community/tutorials/vuejs-vuex-persist-state
 // https://www.digitalocean.com/community/tutorials/vuejs-rest-api-axios
 
+Vue.prototype.$bus = new Vue();
+
 Vue.prototype.$api = new axios.create({
   baseURL: "https://allweb.fun/coop/api/",
   params: {},
