@@ -29,21 +29,33 @@ export default {
    },
     data(){
        return {
-          conversation : false,
+         //  id: this.$route.params.id,
+          conversation: false,
           messages: []
        }
     },
-    mounted(){
+    mounted() {
        let id = this.$route.params.id;
        this.$api.get(`channels/${id}`).then(response => {
           this.conversation = response.data;
        });
 
        this.$bus.$on('charger-message', message => {
-          console.log("here");
-          console.log(message)
-          this.messages.push(message)
-       })
+          // le paramètre message n'est pas utile, on trouvera le message
+          // allant chercher tous les message dans le current channel
+          console.log(message);
+          this.getMessage();
+         // this.message.push(message);
+       });
+    },
+    methods: {
+       getMessage() {
+          this.$api.get(`channels/${this.conversation.id}/posts`).then(response => {
+             this.messages = response;
+             console.log("ouiiiiiiiiiii");
+             console.log(this.conversation.id)
+          })
+       }
     }
 }
 </script>
