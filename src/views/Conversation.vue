@@ -8,10 +8,10 @@
                            <p>{{conversation.label}}</p><br/>
                               <router-link  div="box" class="button button is-dark" :to="{name : 'deleteConversation', params :{id:conversation.id}}"> delete conversation</router-link>
                         </div>
+                        <posterMessage :conversation="conversation"/>
                         <div v-for="message in messages" :key="message.id">
                            <Message :message="message" />
                         </div>
-                        <posterMessage :conversation="conversation"/>
                </section>
    </div>
 </template>
@@ -51,7 +51,8 @@ export default {
     methods: {
        getMessage() {
           this.$api.get(`channels/${this.conversation.id}/posts`).then(response => {
-             this.messages = response;
+             // .data !!!!!!!!
+             this.messages = response.data;
              console.log("ouiiiiiiiiiii");
              console.log(this.conversation.id)
           })

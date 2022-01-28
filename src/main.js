@@ -24,9 +24,10 @@ Vue.prototype.$api.interceptors.request.use(function(config) {
 
 Vue.config.productionTip = false
 
+//      TO DO to make work
 // cette ligne import/charge globalement un composant, ici le header
 // Pas besoin : - d'importe dans les view - de le déclarer dans components
-// Vue.component('Header', () => import('@/composants/Header.vue'))
+Vue.component('Header', () => import('@/components/Header.vue'))
 
 new Vue({
   router,

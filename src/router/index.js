@@ -51,6 +51,12 @@ const routes = [{
         component: () =>
             import ('../views/Members')
     },
+    {
+        path: '/member/:idMember',
+        name: 'Member',
+        component: () =>
+            import ('../views/Member')
+    },
 ]
 
 const router = new VueRouter({
