@@ -1,5 +1,8 @@
 <template>
     <h1>membre</h1>
+
+    <!-- <p>{{ member.fullname }}</p> -->
+
 </template>
 
 <script>
@@ -17,6 +20,7 @@ export default {
     },
 
     mounted() {
+        //TODO Doesn't work, à corriger
         this.member = this.$store.getters.getMembre(this.$route.params.idMembre);
         console.warn("Member.vue :" + this.member);
     },

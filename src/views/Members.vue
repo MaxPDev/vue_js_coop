@@ -13,7 +13,6 @@
                 :key="member.id"
                 class="box card"
               >
-
                 <div class="card-content">
                   <div class="media">
                     <div class="media-left">
@@ -21,14 +20,13 @@
                         <img :src="avatar(member)" alt="avatar" />
                       </figure>
                     </div>
-                    
+
                     <div class="media-content">
                       <p class="title is-4">{{ member.fullname }}</p>
-                      <p class="subtitle is-6"> {{ member.email }} </p>
+                      <p class="subtitle is-6">{{ member.email }}</p>
                     </div>
                   </div>
                 </div>
-
               </router-link>
             </div>
           </div>

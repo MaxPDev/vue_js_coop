@@ -5,7 +5,7 @@
     <div class="media">
         <div class="media-left">
         <figure class="image is-48x48">
-            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+            <img :src="avatar(member)">
         </figure>
         </div>
         <div class="media-content">
@@ -29,6 +29,22 @@
 export default {
     // name: 'Message',
     props: ['message'],
+
+    computed: {
+        dateMessage() {
+            let date = new Date(this.message.created_at);
+            return (
+                "le " + date.toLocaleDateString("fr-FR") +
+                " à " +
+                date.toLocaleTimeString("fr-FR")
+            );
+        },
+        member() {
+            //TODO user mutation
+            // console.log(this.message);
+            return this.$store.getters.getMembre(this.message.member_id);
+        }
+    }
 
 }
 
