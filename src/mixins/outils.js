@@ -10,7 +10,7 @@ export const Outils = {
                 hash = str.charCodeAt(i) + ((hash << 5) - hash);
             }
             var colour = "";
-            for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 3; j++) {
                 var value = (hash >> (i*8)) & 0xff;
                 colour += ("00" + value.toString(16)).substr(-2);
             }

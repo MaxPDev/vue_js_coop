@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 
+import {Outils} from "./mixins/outils.js";
+Vue.mixin(Outils); //TODO: check mixin
+
 // https://www.digitalocean.com/community/tutorials/vuejs-vuex-persist-state
 // https://www.digitalocean.com/community/tutorials/vuejs-rest-api-axios
 
