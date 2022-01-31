@@ -1,22 +1,40 @@
 <template>
-      <router-view/>  
+  <router-view />
 </template>
 <script>
-export default{
-  name : "app",
-  mounted(){
-    this.$api.get('ping').then();
-    if(!this.$store.state.token){
-      this.$router.push('login');
+export default {
+  name: "app",
+  mounted() {
+    this.$api.get("ping").then();
+    if (!this.$store.state.token) {
+      this.$router.push("login");
     }
-  }
-}
+  },
 
+  methods: {
+    ready() {
+      this.$store.commit("setReady", true);
+    },
+    demarrer() {
+      this.$api.get("members").then((response) => {
+        //TODO: à modifier avec les mutations
+        this.$store.commit("setMembers", response.data);
+        this.ready();
+      });
+    },
+    seConnecter() {
+      this.$commit("setToken", false);
+      //TODO: à modifier avec les mutations
+      this.$router.push("/connexion");
+      this.ready();
+    },
+  },
+};
 </script>
 
 <style>
-body{
-  height : 100%;
-  background-color : #AEB6BF;
+body {
+  height: 100%;
+  background-color: #aeb6bf;
 }
 </style>
