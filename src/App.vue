@@ -8,6 +8,10 @@ export default {
     this.$api.get("ping").then();
     if (!this.$store.state.token) {
       this.$router.push("login");
+    } else {
+      this.$api(`members/${this.$store.state.member.id}/signedin`)
+      .then(this.demarrer)
+      .catch(this.seConnecter);
     }
   },
 

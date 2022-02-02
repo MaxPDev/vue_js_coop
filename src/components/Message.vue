@@ -42,6 +42,8 @@ export default {
         member() {
             //TODO user mutation
             // console.log(this.message);
+            console.log(this.message.member_id);
+            
             return this.$store.getters.getMembre(this.message.member_id);
         }
     }
