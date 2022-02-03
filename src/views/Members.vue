@@ -9,7 +9,7 @@
 
             <div class="box" v-for="member in members" :key="member.id">
               <router-link
-                :to="{ name: 'Membre', params: { idMembre: member.id } }"
+                :to="{ name: 'Member', params: { idMember: member.id } }"
                 :key="member.id"
                 class="box card"
               >
@@ -51,7 +51,6 @@ export default {
   // TODO: Mettre members aux store,en utilisant les mutations
   mounted() {
     this.$api.get("members").then((response) => {
-      console.log(response.data);
       this.members = response.data;
     });
   },

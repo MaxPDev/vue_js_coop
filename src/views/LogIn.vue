@@ -60,7 +60,6 @@ export default {
                  email : this.email,
                  password : this.password,
              }).then(response => {
-                 console.log(response.data)
                 //  this.$store.commit('setToken',response.data.token);
                 //  this.$store.commit('setMember',response.data.member);
                 this.setToken(response.data.token),
