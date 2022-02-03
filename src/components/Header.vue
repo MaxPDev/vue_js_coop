@@ -19,7 +19,7 @@
         <div class="navbar-item">
           <div class="navbar-item"><p class="header-item">connecté en tant que <b class="header-item"> {{$store.state.member.fullname}}</b></p></div>
           <div class="buttons">
-            <router-link class="navbar-item button" to="LogOut">Déconnexion</router-link>
+            <router-link class="navbar-item button" to="/LogOut">Déconnexion</router-link>
           </div>
         </div>
       </div>
