@@ -12,8 +12,8 @@
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <router-link class="navbar-item" to="/"><h4 class="header-item">Mes conversations</h4></router-link>
-        <router-link class="navbar-item" to="createConversation"><h4 class="header-item">Nouvelle conversation</h4></router-link>
-        <router-link class="navbar-item" to="Members"><h4 class="header-item">Membres</h4></router-link>
+        <router-link class="navbar-item" to="/createConversation"><h4 class="header-item">Nouvelle conversation</h4></router-link>
+        <router-link class="navbar-item" to="/Members"><h4 class="header-item">Membres</h4></router-link>
       </div>
       <div class="navbar-end">
         <div class="navbar-item">
