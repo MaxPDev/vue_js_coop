@@ -9,8 +9,8 @@
         </figure>
         </div>
         <div class="media-content">
-        <p class="title is-4">John Smith</p>
-        <p class="subtitle is-6">@johnsmith</p>
+        <p class="title is-4"> {{ member.fullname }}</p>
+        <p class="subtitle is-6"> {{ member.email }}</p>
         </div>
     </div>
 
