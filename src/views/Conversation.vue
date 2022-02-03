@@ -38,6 +38,7 @@ export default {
        let id = this.$route.params.id;
        this.$api.get(`channels/${id}`).then(response => {
           this.conversation = response.data;
+          this.getMessage();
        });
 
        this.$bus.$on('charger-message', message => {
