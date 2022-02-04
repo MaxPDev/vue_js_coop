@@ -39,7 +39,7 @@ export default {
   background-color: #34495E;
 }
 .header-item{
-  color : white;
+  color : rgb(236, 226, 226);
 }
 
 .header-item:hover {

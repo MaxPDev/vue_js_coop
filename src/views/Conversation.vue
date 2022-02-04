@@ -46,6 +46,7 @@ export default {
           // allant chercher tous les message dans le current channel
           console.log(message);
           this.getMessage();
+          console.log(this.messages)
          // this.message.push(message);
        });
     },
@@ -54,8 +55,7 @@ export default {
           this.$api.get(`channels/${this.conversation.id}/posts`).then(response => {
              // .data !!!!!!!!
              this.messages = response.data;
-             console.log("ouiiiiiiiiiii");
-             console.log(this.conversation.id)
+
           })
        }
     }

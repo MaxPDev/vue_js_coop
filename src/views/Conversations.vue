@@ -32,7 +32,6 @@ export default {
   mounted() {
     this.$api.get("channels").then((response) => {
       this.conversations = response.data;
-      console.log(this.conversations);
     });
   },
 };

@@ -2,7 +2,7 @@
 <form class="box" @submit.prevent="poster">
       <div class="field">
           <div class="control">
-              <input type="text" class="input" v-model="message"/>
+              <input type="text" class="input" v-model="message" placeholder="what's up ?">
           </div>
       </div>
       <div class="buttons">
@@ -24,8 +24,9 @@ props : ["conversation"],
                 channel_id : this.conversation.id,
                 message : this.message,
                 member_id : this.$store.state.member.id}).then(response =>{
-                    // console.log(response.data);
+                    console.log(response.data);
                     this.$bus.$emit('charger-message', response.data)
+                    this.message = '';
                 })
             }
         }

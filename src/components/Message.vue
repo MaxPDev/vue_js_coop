@@ -60,7 +60,10 @@ export default {
     },
 
     mounted() {
-        this.member = this.getMember(this.$route.params.idMember);
+        // this.member = this.getMember(this.$route.params.idMember);
+        this.member = this.getMember(this.message.member_id);
+        console.war("member");
+        console.log(this.member);
     }
 
 }
