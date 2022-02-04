@@ -18,8 +18,8 @@
             </figure>
           </div>
           <div class="media-content">
-            <p class="title is-4">John Smith</p>
-            <p class="subtitle is-6">@johnsmith</p>
+            <p class="title is-4">{{ member.fullname}}</p>
+            <p class="subtitle is-6">{{ member.email }}</p>
           </div>
         </div>
 
@@ -41,6 +41,9 @@
 
 
 <script>
+
+import { mapGetters } from 'vuex'
+
 export default {
   data() {
     return {
@@ -50,9 +53,14 @@ export default {
 
   mounted() {
     //TODO Doesn't work, à corriger
-    this.member = this.$store.getters.getMember(this.$route.params.idMember);
+    // this.member = this.$store.getters.getMember(this.$route.params.idMember);
+    this.member = this.getMember(this.$route.params.idMember);
+
   },
   computed: {
+
+    ...mapGetters(['getMember']),
+
     created_at() {
       if (this.member) {
         let date = new Date(this.member.created_at);

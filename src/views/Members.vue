@@ -37,23 +37,30 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import Header from "../components/Header.vue";
+
 export default {
   components: {
     Header,
   },
   data() {
     return {
-      members: [],
+      // members: [],
     };
   },
 
   // TODO: Mettre members aux store,en utilisant les mutations
   mounted() {
-    this.$api.get("members").then((response) => {
-      this.members = response.data;
-    });
+    // this.$api.get("members").then((response) => {
+      //   this.members = response.data;
+    // });
+    
   },
+  computed: {
+    ...mapState(['members'])
+  },
+
 };
 </script>
 
