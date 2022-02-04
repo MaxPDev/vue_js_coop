@@ -4,27 +4,31 @@
     <div v-if="member" class="card">
       <div class="card-image">
         <figure class="image is-3by1">
-          <img class="is-rounded" :src="avatar(member)" alt="avatar">
+          <img class="is-rounded" :src="avatar(member)" alt="avatar" />
         </figure>
       </div>
       <div class="card-content">
         <div class="media">
-          <div class="media-right">
-          </div>
+          <div class="media-left"></div>
           <div class="media-content">
-            <p class="title is-4">{{ member.fullname}}</p>
+            <p class="title is-4">{{ member.fullname }}</p>
             <p class="subtitle is-6">{{ member.email }}</p>
           </div>
         </div>
 
         <div class="content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-          iaculis mauris. <a>@bulmaio</a>. <a href="#">#css</a>
-          <a href="#">#responsive</a>
+          Description here
           <br />
-          <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+          <br />
+          <time>Member since {{ created_at }} </time>
         </div>
       </div>
+      <div class="box">
+        {{ messages.length }} last posts
+      </div>
+      <template v-for="message in messages">
+        <message :message="message" :key="message.id" />
+      </template>
     </div>
   </div>
 </template>
@@ -35,13 +39,19 @@
 
 
 <script>
-
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
+import Message from "../components/Message.vue";
 
 export default {
+  components: {
+    Message,
+  },
+
   data() {
     return {
       member: false,
+      user_messages: [],
+      conversation: "",
     };
   },
 
@@ -50,10 +60,32 @@ export default {
     // this.member = this.$store.getters.getMember(this.$route.params.idMember);
     this.member = this.getMember(this.$route.params.idMember);
 
+    /// Récupérer les dix dernier messages de l'utilisateurs :
+    /// Récupérer les channels, pour chaque channel récupérér les messages de l'utilisateur, les trier par date et récupérer les dix premiers
+    ///
+    //
+    this.$api.get("channels").then((response) => {
+      response.data.forEach((conversation) => {
+        this.conversation = conversation;
+        this.$api.get(`channels/${conversation.id}/posts`).then((response) => {
+          response.data.forEach((message) => {
+            if (message.member_id == this.member.id) {
+              this.user_messages.push(message);
+            }
+          });
+        });
+      });
+    });
   },
   computed: {
+    ...mapGetters(["getMember"]),
 
-    ...mapGetters(['getMember']),
+    messages() {
+      //trier les messages selon leurs date de création et prendre les 10 messages les plus récent
+      return this.user_messages
+        .sort((msg_a, msg_b) => new Date(msg_a.created_at) < new Date(msg_b.created_at))
+        .slice(0, 10);
+    },
 
     created_at() {
       if (this.member) {

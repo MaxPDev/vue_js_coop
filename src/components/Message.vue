@@ -20,7 +20,7 @@
         <!-- <a>@bulmaio</a>. -->
         <!-- <a href="#">#css</a> <a href="#">#responsive</a> -->
         <br>
-        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+        <time>{{ message.created_at}}</time>
     </div>
     </div>
     </div>
@@ -28,11 +28,21 @@
 </template>
 <script>
 
+import { mapGetters } from "vuex";
+
 export default {
     // name: 'Message',
     props: ['message'],
 
+    data() {
+        return {
+            member: false
+        }
+    },
+
     computed: {
+        ...mapGetters(["getMember"]),
+
         dateMessage() {
             let date = new Date(this.message.created_at);
             return (
@@ -41,12 +51,16 @@ export default {
                 date.toLocaleTimeString("fr-FR")
             );
         },
-        member() {
-            //TODO user mutation
-            // console.log(this.message);
+        // member() {
+        //     //TODO user mutation
+        //     // console.log(this.message);
             
-            return this.$store.getters.getMembre(this.message.member_id);
-        }
+        //     return this.$store.getters.getMembre(this.message.member_id);
+        // }
+    },
+
+    mounted() {
+        this.member = this.getMember(this.$route.params.idMember);
     }
 
 }
