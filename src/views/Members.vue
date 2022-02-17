@@ -28,16 +28,25 @@
                   </div>
                 </div>
               </router-link>
+              <button
+                @click="deleteMember(member.id)"
+                class="button is-danger is-outlined"
+              >
+                Supprimer
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <!--Flash message (alert) -->
+    <FlashMessage></FlashMessage>
   </section>
 </template>
 
 <script>
 import { mapState } from "vuex";
+// import { mapMutations } from "vuex";
 import Header from "../components/Header.vue";
 
 export default {
@@ -53,14 +62,37 @@ export default {
   // TODO: Mettre members aux store,en utilisant les mutations
   mounted() {
     // this.$api.get("members").then((response) => {
-      //   this.members = response.data;
+    //   this.members = response.data;
     // });
-    
-  },
-  computed: {
-    ...mapState(['members'])
   },
 
+  methods: {
+    // Supprimer un member
+    deleteMember(member_id) {
+      this.$api.delete(`members/${member_id}`).then((response) => {
+        this.responseMessage = response.data.message;
+
+        // Message de confirmatino
+        this.flashMessage.show({
+          status: "info",
+          title: "User deleted",
+        });
+
+        // Mettre à jour la liste
+        this.$api.get("members").then((response) => {
+          //TODO: à modifier avec les mutations
+          this.$store.commit("setMembers", response.data);
+          // this.setMembers(response.data); //? mapMutation doesn't refresh well, why ?
+          // this.ready();
+        });
+      });
+    },
+  },
+
+  computed: {
+    ...mapState(["members"]),
+    // ...mapMutations(["setMembers"]),
+  },
 };
 </script>
 

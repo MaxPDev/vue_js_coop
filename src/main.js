@@ -4,7 +4,10 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 
+import FlashMessage from '@smartweb/vue-flash-message';
 import {Outils} from "./mixins/outils.js";
+
+Vue.use(FlashMessage);
 Vue.mixin(Outils); //TODO: check mixin
 
 // https://www.digitalocean.com/community/tutorials/vuejs-vuex-persist-state
