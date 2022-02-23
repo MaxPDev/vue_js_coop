@@ -6,7 +6,7 @@
                         <div class="box" v-if="conversation">
                            <p><b>{{conversation.topic}}</b></p>
                            <p>{{conversation.label}}</p><br/>
-                              <router-link  div="box" class="button button is-dark" :to="{name : 'deleteConversation', params :{id:conversation.id}}"> delete conversation</router-link>
+                              <router-link  div="box" class="button is-danger is-outlined" :to="{name : 'deleteConversation', params :{id:conversation.id}}"> delete conversation</router-link>
                         </div>
                         <posterMessage :conversation="conversation"/>
                         <div v-for="message in messages" :key="message.id">

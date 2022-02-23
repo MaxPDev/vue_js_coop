@@ -72,7 +72,7 @@ export default {
       this.$api.delete(`members/${member_id}`).then((response) => {
         this.responseMessage = response.data.message;
 
-        // Message de confirmatino
+        // Message de confirmation
         this.flashMessage.show({
           status: "info",
           title: "User deleted",
