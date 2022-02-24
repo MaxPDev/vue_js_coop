@@ -29,6 +29,11 @@ props : ["conversation", "message_to_edit"],
                 })
             }
         },
+
+        mounted() {
+                 
+         window.scrollTo(0,0);
+        }
 }
 </script>
 

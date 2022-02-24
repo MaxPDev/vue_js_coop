@@ -74,6 +74,7 @@ export default {
           title: "Messaged modified",
           time: 1000,
         });
+ 
       }
 
       this.modification = false;
