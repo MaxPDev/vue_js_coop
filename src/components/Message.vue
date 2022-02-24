@@ -24,12 +24,14 @@
         <time>{{ message.created_at }}</time>
       </div>
     </div>
-    <div
-      @click="deleteMessage(message.id, member.id)"
-      id="btn"
-      v-if="current_member.id === member.id"
-    >
-      <button class="button is-danger is-outlined">x</button>
+
+    <div id="btns" v-if="current_member.id === member.id">
+      <div class="box" @click="modifierMessage(message)">
+        <button class="button is-primary is-outlined">🖉</button>
+      </div>
+      <div class="box" @click="deleteMessage(message.id, member.id)">
+        <button class="button is-danger is-outlined">x</button>
+      </div>
     </div>
   </div>
 </template>
@@ -64,12 +66,6 @@ export default {
         date.toLocaleTimeString("fr-FR")
       );
     },
-    // member() {
-    //     //TODO user mutation
-    //     // console.log(this.message);
-
-    //     return this.$store.getters.getMembre(this.message.member_id);
-    // }
   },
 
   mounted() {
@@ -97,24 +93,15 @@ export default {
             this.fm = this.flashMessage.show({
               status: "info",
               title: "Message deleted",
-              time: 1000
+              time: 1000,
             });
-
-              // this.flashMessage.deleteMessage(this.fm);
-            // setTimeout(function() {
-            // }, 10);
-
-
-            //   // Mettre à jour la liste
-            //   this.$api.get("members").then((response) => {
-            //     //TODO: à modifier avec les mutations
-            //     this.$store.commit("setMembers", response.data);
-            //     // this.setMembers(response.data); //? mapMutation doesn't refresh well, why ?
-            //     // this.ready();
-            //   });
           });
       }
     },
+
+    modifierMessage(message) {
+      this.$bus.$emit('modifier-message', message)
+    }
   },
 };
 </script>
@@ -123,5 +110,9 @@ export default {
 .card {
   display: flex;
   justify-content: space-between;
+}
+
+#btns {
+display: flex;
 }
 </style>

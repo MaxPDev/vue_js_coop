@@ -20,7 +20,7 @@
                 </div>
               </div>
               <div class="buttons">
-                <button class="button is-info is-outlined">Poster</button>
+                <button class="button is-info is-outlined">Valider</button>
                 <router-link class="button is-outlined" to="/"
                   >Annuler</router-link
                 >
