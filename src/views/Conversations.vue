@@ -6,12 +6,21 @@
         <div class="columns is-centered">
           <div class="column is-7-tablet is-6-desktop is-5-widescreen">
             <h4 class="title is-4 has-text-centered">Mes conversations</h4>
-            <template v-for="conversation in conversations">
-              <conversation
-                class="box"
-                :key="conversation.id"
-                :conversation="conversation"
-              />
+            <template>
+              <div v-for="conversation in conversations" :key="conversation.id">
+                <router-link
+                  :to="{
+                    name: 'Conversation',
+                    params: { id: conversation.id },
+                  }"
+                >
+                  <conversation
+                    class="box"
+                    :key="conversation.id"
+                    :conversation="conversation"
+                  />
+                </router-link>
+              </div>
             </template>
           </div>
         </div>
@@ -42,7 +51,6 @@ export default {
     });
 
     this.$bus.$on("delete-conversation", (topic) => {
-      
       console.log(topic);
       this.getChannels();
       console.log(this.messages);
@@ -51,12 +59,10 @@ export default {
 
   methods: {
     getChannels() {
-      this.$api
-        .get(`channels`)
-        .then((response) => {
-          // .data !!!!!!!!
-          this.conversations = response.data;
-        });
+      this.$api.get(`channels`).then((response) => {
+        // .data !!!!!!!!
+        this.conversations = response.data;
+      });
     },
   },
 };

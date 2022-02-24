@@ -23,11 +23,15 @@
           <time>Member since {{ created_at }} </time>
         </div>
       </div>
-      <div class="box">
-        {{ messages.length }} last posts
-      </div>
-      <template v-for="message in messages">
-        <message :message="message" :key="message.id" />
+      <div class="box">{{ messages.length }} last posts</div>
+      <template>
+        <div v-for="message in messages" :key="message.id">
+          <router-link
+            :to="{ name: 'Conversation', params: { id: message.channel_id } }"
+          >
+            <message :message="message" :key="message.id" />
+          </router-link>
+        </div>
       </template>
     </div>
   </div>
@@ -83,7 +87,10 @@ export default {
     messages() {
       //trier les messages selon leurs date de création et prendre les 10 messages les plus récent
       return this.user_messages
-        .sort((msg_a, msg_b) => new Date(msg_a.created_at) < new Date(msg_b.created_at))
+        .sort(
+          (msg_a, msg_b) =>
+            new Date(msg_a.created_at) < new Date(msg_b.created_at)
+        )
         .slice(0, 10);
     },
 
