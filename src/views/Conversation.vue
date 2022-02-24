@@ -18,12 +18,16 @@
         >
       </div>
       <posterMessage v-if="!modification" :conversation="conversation" />
-      <modifierMessage v-else :conversation="conversation" :message_to_edit="message_to_edit"/>
+      <modifierMessage
+        v-else
+        :conversation="conversation"
+        :message_to_edit="message_to_edit"
+      />
       <div v-for="message in messages" :key="message.id">
-        <Message :message="message" />
+        <Message :message="message" :ref="message.id" />
       </div>
     </section>
-        <!--Flash message (alert) -->
+    <!--Flash message (alert) -->
     <FlashMessage></FlashMessage>
   </div>
 </template>
@@ -60,38 +64,39 @@ export default {
       // allant chercher tous les message dans le current channel
       console.log(message);
 
-      if(!this.modification) {
-      // Message de confirmation
+      if (!this.modification) {
+        // Message de confirmation
         this.flashMessage.show({
           status: "info",
           title: "Posted !",
           time: 1000,
         });
       } else {
-                 // Message de confirmation
+        // Message de confirmation
         this.flashMessage.show({
           status: "info",
           title: "Messaged modified",
           time: 1000,
         });
- 
       }
 
       this.modification = false;
       this.getMessage();
       console.log(this.messages);
       // this.message.push(message);
-      
     });
 
     this.$bus.$on("delete-message", () => {
       this.getMessage();
     });
 
-   this.$bus.$on("modifier-message", (message_to_edit) => {
-
+    this.$bus.$on("modifier-message", (message_to_edit) => {
       this.modification = true;
       this.message_to_edit = message_to_edit;
+    });
+
+   this.$bus.$on("goto-message", (message_id) => {
+      this.goto(message_id);
     });
   },
   methods: {
@@ -102,6 +107,13 @@ export default {
           // .data !!!!!!!!
           this.messages = response.data;
         });
+    },
+    goto(refName) {
+      var element = this.$refs[refName];
+      var top = element.offsetTop;
+      // var top = element.busstop.getBoundingClientRect().top;
+
+      window.scrollTo(0, top);
     },
   },
 };

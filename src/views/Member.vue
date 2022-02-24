@@ -29,7 +29,10 @@
           <router-link
             :to="{ name: 'Conversation', params: { id: message.channel_id } }"
           >
-            <message :message="message" :key="message.id" />
+          <div @click="goto(message.id)">
+
+            <message :message="message" :key="message.id"/>
+          </div>
           </router-link>
         </div>
       </template>
@@ -80,6 +83,11 @@ export default {
         });
       });
     });
+  },
+  methods: {
+    goto(message_id) {
+      this.$bus.$emit("goto-message", message_id);
+    }
   },
   computed: {
     ...mapGetters(["getMember"]),

@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" ref="message.id">
     <div class="card-content">
       <div class="media">
         <div class="media-left">
