@@ -42,6 +42,7 @@ export default {
     });
 
     this.$bus.$on("delete-conversation", (topic) => {
+      
       console.log(topic);
       this.getChannels();
       console.log(this.messages);

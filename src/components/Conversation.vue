@@ -43,6 +43,7 @@ refresh in lvl up */
         this.flashMessage.show({
           status: "info",
           title: "Channel " + this.conversation.topic + " deleted",
+          time: 2000
         });
 
       //   // Mettre à jour la liste

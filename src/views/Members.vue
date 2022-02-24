@@ -76,6 +76,7 @@ export default {
         this.flashMessage.show({
           status: "info",
           title: "User deleted",
+          time: 1000
         });
 
         // Mettre à jour la liste
