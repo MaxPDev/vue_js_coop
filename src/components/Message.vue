@@ -16,7 +16,7 @@
       </div>
 
       <div class="content">
-        {{ message.message }}
+        <span v-html="message.message"></span>
         <!--//todo: mettre des tags ? -->
         <!-- <a>@bulmaio</a>. -->
         <!-- <a href="#">#css</a> <a href="#">#responsive</a> -->

@@ -11,7 +11,11 @@
       </router-link>
     </div>
 
-    <div id="btn">
+    <div id="btns">
+      <router-link  :to="{name : 'EditerConversation', params :{id: conversation.id}}">
+        <button class="button is-primary is-outlined">🖉</button>
+      </router-link>
+
       <button
         @click="deleteConversation()"
         class="button is-danger is-outlined"
@@ -34,25 +38,25 @@ refresh in lvl up */
     deleteConversation() {
       this.$api.delete(`channels/${this.conversation.id}`).then((response) => {
         this.responseMessage = response.data.message;
-      //   console.log(this.message);
+        //   console.log(this.message);
 
         // emit to the Conversations view
-        this.$bus.$emit('delete-conversation', this.conversation.topic)
+        this.$bus.$emit("delete-conversation", this.conversation.topic);
 
         // Message de confirmation
         this.flashMessage.show({
           status: "info",
           title: "Channel " + this.conversation.topic + " deleted",
-          time: 2000
+          time: 2000,
         });
 
-      //   // Mettre à jour la liste
-      //   this.$api.get("members").then((response) => {
-      //     //TODO: à modifier avec les mutations
-      //     this.$store.commit("setMembers", response.data);
-      //     // this.setMembers(response.data); //? mapMutation doesn't refresh well, why ?
-      //     // this.ready();
-      //   });
+        //   // Mettre à jour la liste
+        //   this.$api.get("members").then((response) => {
+        //     //TODO: à modifier avec les mutations
+        //     this.$store.commit("setMembers", response.data);
+        //     // this.setMembers(response.data); //? mapMutation doesn't refresh well, why ?
+        //     // this.ready();
+        //   });
       });
     },
   },

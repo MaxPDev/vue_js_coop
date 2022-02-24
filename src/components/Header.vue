@@ -2,7 +2,7 @@
 <section class="hero header">
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <div class="navbar-item header-item"><b>Coop</b></div>
+      <router-link to="/" class="navbar-item header-item"><b>C O ' O P</b></router-link>
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -17,7 +17,7 @@
       </div>
       <div class="navbar-end">
         <div class="navbar-item">
-          <div class="navbar-item"><p class="header-item">connecté en tant que <b class="header-item"> {{$store.state.member.fullname}}</b></p></div>
+          <div class="navbar-item"><p class="header-item"> Hello, <b class="header-item"> {{$store.state.member.fullname}}</b></p></div>
           <div class="buttons">
             <router-link class="navbar-item button" to="/LogOut">Déconnexion</router-link>
           </div>

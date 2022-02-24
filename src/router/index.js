@@ -28,6 +28,12 @@ const routes = [{
             import ('../views/createConversation.vue')
     },
     {
+        path: '/EditerConversation',
+        name: 'EditerConversation',
+        component: () =>
+            import ('../views/EditerConversation.vue')
+    },
+    {
         path: '/conversation/:id',
         name: 'Conversation',
         component: () =>
