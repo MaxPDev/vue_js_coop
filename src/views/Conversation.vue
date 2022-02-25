@@ -2,7 +2,7 @@
   <div>
     <Header />
     <section class="section">
-      <h4 class="title is-4 has-text-centered">Détail de conversation</h4>
+      <h4 class="title is-4 has-text-centered">{{ conversation.topic }}</h4>
       <div class="box" v-if="conversation">
         <p>
           <b>{{ conversation.topic }}</b>
@@ -120,4 +120,19 @@ export default {
 </script>
 
 <style>
+
+   html {
+
+      background-color: rgb(24, 26, 27);
+   }
+
+
+h4.title {
+  color: rgb(198, 193, 185)
+}
+
+p {
+  color: rgb(185, 179, 170)
+}
+
 </style>

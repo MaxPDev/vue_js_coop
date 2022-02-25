@@ -10,8 +10,8 @@ export default {
       this.$router.push("login");
     } else {
       this.$api(`members/${this.$store.state.member.id}/signedin`)
-      .then(this.demarrer)
-      .catch(this.seConnecter);
+        .then(this.demarrer)
+        .catch(this.seConnecter);
     }
   },
 
@@ -37,8 +37,32 @@ export default {
 </script>
 
 <style>
+html {
+  background-color: rgb(24, 26, 27);
+}
+
+h4.title {
+  color: rgb(198, 193, 185);
+}
+
 body {
   height: 100%;
   background-color: #5a5f64;
+  color: rgb(185, 179, 170)
 }
+
+.box, .card {
+
+  background-color: rgb(24, 26, 27);
+}
+
+p, span, time, label.label, div.card-content, p.title, p.subtitle, .box {
+  color: rgb(185, 179, 170)
+}
+
+.input {
+  color: wheat;
+  background-color: rgb(24, 26, 27);
+}
+
 </style>

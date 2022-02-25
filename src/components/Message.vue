@@ -100,8 +100,8 @@ export default {
     },
 
     modifierMessage(message) {
-      this.$bus.$emit('modifier-message', message)
-    }
+      this.$bus.$emit("modifier-message", message);
+    },
   },
 };
 </script>
@@ -113,6 +113,10 @@ export default {
 }
 
 #btns {
-display: flex;
+  display: flex;
+}
+
+p, span {
+  color: wheat;
 }
 </style>

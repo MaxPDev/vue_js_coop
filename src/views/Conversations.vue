@@ -8,18 +8,18 @@
             <h4 class="title is-4 has-text-centered">Mes conversations</h4>
             <template>
               <div v-for="conversation in conversations" :key="conversation.id">
-                <router-link
+                <!-- <router-link
                   :to="{
                     name: 'Conversation',
                     params: { id: conversation.id },
                   }"
-                >
+                > -->
                   <conversation
                     class="box"
                     :key="conversation.id"
                     :conversation="conversation"
                   />
-                </router-link>
+                <!-- </router-link> -->
               </div>
             </template>
           </div>
