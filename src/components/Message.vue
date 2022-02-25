@@ -27,7 +27,7 @@
 
     <div id="btns" v-if="current_member.id === member.id">
       <div class="box" @click="modifierMessage(message)">
-        <button class="button is-primary is-outlined">🖉</button>
+        <button class="button is-primary is-outlined">modifier</button>
       </div>
       <div class="box" @click="deleteMessage(message.id, member.id)">
         <button class="button is-danger is-outlined">x</button>

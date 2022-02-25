@@ -13,7 +13,7 @@
 
     <div id="btns">
       <router-link  :to="{name : 'EditerConversation', params :{id: conversation.id}}">
-        <button class="button is-primary is-outlined">🖉</button>
+        <button class="button is-primary is-outlined">edit</button>
       </router-link>
 
       <button
