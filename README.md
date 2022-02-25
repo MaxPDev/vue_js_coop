@@ -1,4 +1,4 @@
-# coop
+# TD CO'OP
 
 ## Toutes les fonctionnalités ont été implémentées, sauf : 
 	 "Cliquer sur le message depuis la fiche du membre permet d'arriver sur la conversation correspondante, avec le message concerné en contexte"
