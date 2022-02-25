@@ -59,30 +59,29 @@ export default {
       this.getMessage();
     });
 
-    this.$bus.$on("charger-message", (message) => {
+    this.$bus.$on("charger-message", () => {
       // le paramètre message n'est pas utile, on trouvera le message
       // allant chercher tous les message dans le current channel
-      console.log(message);
+  
 
       if (!this.modification) {
         // Message de confirmation
         this.flashMessage.show({
           status: "info",
           title: "Posted !",
-          time: 1000,
+          time: 2000,
         });
       } else {
         // Message de confirmation
         this.flashMessage.show({
           status: "info",
           title: "Messaged modified",
-          time: 1000,
+          time: 2000,
         });
       }
 
-      this.modification = false;
       this.getMessage();
-      console.log(this.messages);
+      this.modification = false;
       // this.message.push(message);
     });
 

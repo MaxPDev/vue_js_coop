@@ -1,3 +1,0 @@
-git, déployage auto
-
-netifly

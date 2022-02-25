@@ -67,7 +67,7 @@ export default {
           this.flashMessage.success({
             status: "success",
             title: "Channel " + this.conversation.topic + " has been modified",
-            time: 1500,
+            time: 2000,
           });
         })
         .catch((error) => {

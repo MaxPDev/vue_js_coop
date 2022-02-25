@@ -50,13 +50,6 @@ refresh in lvl up */
           time: 2000,
         });
 
-        //   // Mettre à jour la liste
-        //   this.$api.get("members").then((response) => {
-        //     //TODO: à modifier avec les mutations
-        //     this.$store.commit("setMembers", response.data);
-        //     // this.setMembers(response.data); //? mapMutation doesn't refresh well, why ?
-        //     // this.ready();
-        //   });
       });
     },
   },
